@@ -1,8 +1,14 @@
-import React, {Component} from 'react';
-import Root from './src/Root';
-import {pushNotifications} from './src/services/';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 
-pushNotifications.configure();
+import { Provider } from 'react-redux';
+import store from './src/Redux/Store';
+
+
+import Root from './src/Root';
+// import {pushNotifications} from './src/services/';
+
+// pushNotifications.configure();
 
 export default class App extends Component {
   componentDidMount = () => {
@@ -10,6 +16,10 @@ export default class App extends Component {
   };
 
   render() {
-    return <Root />;
+    return (
+      <Provider store={store}>
+        <Root />
+      </Provider>
+    );
   }
 }
